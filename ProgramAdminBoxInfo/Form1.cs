@@ -11,7 +11,7 @@ namespace ProgramAdminBoxInfo
             InitializeComponent();
             //виводимо базу в дата грід
             SELECT_boxers S_boxers = new SELECT_boxers();
-            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url");
+            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place");
         }
 
         private void button_test_Click(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ProgramAdminBoxInfo
             }
             //виводимо базу в дата грід
             SELECT_boxers S_boxers = new SELECT_boxers();
-            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url");
+            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place");
 
         }
 

@@ -8,7 +8,7 @@ namespace ProgramAdminBoxInfo
 {
     internal class Replace_text
     {
-        //зміна унікальних літер латиниці різних країн на стандартні латинські літери 
+        //change of unique Latin letters of different countries to standard Latin letters
         public string Replace_all_letters(string text)
         {
             string[][] alphabets = new string[38][];
@@ -60,7 +60,7 @@ namespace ProgramAdminBoxInfo
             }
             return text;
         }
-        //Прибирання всіх зайвих пробілів, переносів, абзаців з тексу
+        //Remove all extra spaces, hyphens, paragraphs from the text
         public string Replace_gap_text(string text)
         {
             text = text.Replace("\n", " ");

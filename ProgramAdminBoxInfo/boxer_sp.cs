@@ -12,11 +12,15 @@ namespace ProgramAdminBoxInfo
         public string name_ua { get; set; }
         public string name_usa { get; set; }
         public string height { get; set; }
+
         public string reach { get; set; }
         public string stance { get; set; }
         public string wiki_url_en { get; set; }
         public string wiki_url_ua { get; set; }
         public string boxreg_url { get; set; }
+        public string nationality { get; set; }
+        public string residence { get; set; }
+        public string birth_place { get; set; } 
 
     }
 }

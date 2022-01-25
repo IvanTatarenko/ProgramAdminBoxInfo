@@ -38,7 +38,10 @@ namespace ProgramAdminBoxInfo
                     if (s == "wiki_url_en" && !reader.IsDBNull(reader.GetOrdinal("wiki_url_en"))) boxer.wiki_url_en = reader.GetString("wiki_url_en");
                     if (s == "wiki_url_ua" && !reader.IsDBNull(reader.GetOrdinal("wiki_url_ua"))) boxer.wiki_url_ua = reader.GetString("wiki_url_ua");
                     if (s == "boxreg_url" && !reader.IsDBNull(reader.GetOrdinal("boxreg_url"))) boxer.boxreg_url = reader.GetString("boxreg_url");
-                    
+                    if (s == "nationality" && !reader.IsDBNull(reader.GetOrdinal("nationality"))) boxer.nationality = reader.GetString("nationality");
+                    if (s == "residence" && !reader.IsDBNull(reader.GetOrdinal("residence"))) boxer.residence = reader.GetString("residence");
+                    if (s == "birth_place" && !reader.IsDBNull(reader.GetOrdinal("birth_place"))) boxer.birth_place = reader.GetString("birth_place");
+
                 }
                 list.Add(boxer);
                 

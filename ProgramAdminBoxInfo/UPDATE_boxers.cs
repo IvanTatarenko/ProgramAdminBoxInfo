@@ -6,7 +6,7 @@ namespace ProgramAdminBoxInfo
 {
     internal class UPDATE_boxers
     {
-        public void Update_query(string id, string name_usa = "", string name_ua = "", string height = "", string reach = "", string stance = "", string wiki_url_en = "", string wiki_url_ua = "", string boxreg_url = "")
+        public void Update_query(string id, string name_usa = "", string name_ua = "", string height = "", string reach = "", string stance = "", string wiki_url_en = "", string wiki_url_ua = "", string boxreg_url = "", string nationality = "", string residence = "", string birth_place = "")
         {
             string query = "UPDATE boxers SET";
             if (name_usa != "") query = query + " name_usa = @name_usa,";
@@ -17,7 +17,9 @@ namespace ProgramAdminBoxInfo
             if (wiki_url_en != "") query = query + " wiki_url_en = @wiki_url_en,";
             if (wiki_url_ua != "") query = query + " wiki_url_ua = @wiki_url_ua,";
             if (boxreg_url != "") query = query + " boxreg_url = @boxreg_url,";
-            
+            if (nationality != "") query = query + " nationality = @nationality,";
+            if (residence != "") query = query + " residence = @residence,";
+            if (birth_place != "") query = query + " birth_place = @birth_place,";
             query = query + " id = @id WHERE id = @id";
             DB db = new DB();
             //Робимо запрос
@@ -32,6 +34,9 @@ namespace ProgramAdminBoxInfo
             command.Parameters.Add("@wiki_url_en", MySqlDbType.VarChar).Value = wiki_url_en;
             command.Parameters.Add("@wiki_url_ua", MySqlDbType.VarChar).Value = wiki_url_ua;
             command.Parameters.Add("@boxreg_url", MySqlDbType.VarChar).Value = boxreg_url;
+            command.Parameters.Add("@nationality", MySqlDbType.VarChar).Value = nationality;
+            command.Parameters.Add("@residence", MySqlDbType.VarChar).Value = residence;
+            command.Parameters.Add("@birth_place", MySqlDbType.VarChar).Value = birth_place;
             db.openConnection();
             command.ExecuteNonQuery();
             db.closeConnection();
