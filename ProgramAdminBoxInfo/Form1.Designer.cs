@@ -44,7 +44,7 @@
             this.button_test.Name = "button_test";
             this.button_test.Size = new System.Drawing.Size(495, 58);
             this.button_test.TabIndex = 0;
-            this.button_test.Text = "Button Test";
+            this.button_test.Text = "Required";
             this.button_test.UseVisualStyleBackColor = true;
             this.button_test.Click += new System.EventHandler(this.button_test_Click);
             // 
