@@ -9,11 +9,10 @@ namespace ProgramAdminBoxInfo
     {
         public void Insert_query(string name_usa, string name_ua = "", string height = "", string reach = "", string stance = "", string wiki_url_en = "", string wiki_url_ua = "", string boxreg_url = "")
         {
-            // підлючення  до бд
+            //connection to the database
             DB db = new DB();
-            //Команда бд
             MySqlCommand command = new MySqlCommand("INSERT INTO `boxers` (`name_usa`, `name_ua`, `height`, `reach`, `stance`, `wiki_url_en`, `wiki_url_ua`, `boxreg_url`) VALUES (@name_usa, @name_ua, @height, @reach, @stance, @wiki_url_en, @wiki_url_ua, @boxreg_url)", db.getConnection());
-            //маскуємо запроси
+            //mask requests
             command.Parameters.Add("@name_usa", MySqlDbType.VarChar).Value = name_usa;
             command.Parameters.Add("@name_ua", MySqlDbType.VarChar).Value = name_ua;
             command.Parameters.Add("@height", MySqlDbType.VarChar).Value = height;
