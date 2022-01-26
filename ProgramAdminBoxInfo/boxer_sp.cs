@@ -20,7 +20,10 @@ namespace ProgramAdminBoxInfo
         public string boxreg_url { get; set; }
         public string nationality { get; set; }
         public string residence { get; set; }
-        public string birth_place { get; set; } 
+        public string birth_place { get; set; }
+        public string division { get; set; }
+
+
 
     }
 }

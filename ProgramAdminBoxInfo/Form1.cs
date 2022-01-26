@@ -9,16 +9,12 @@ namespace ProgramAdminBoxInfo
         {
             Program.f1 = this;
             InitializeComponent();
-            //виводимо базу в дата грід
             SELECT_boxers S_boxers = new SELECT_boxers();
-            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place");
+            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place division");
         }
 
-        private void button_test_Click(object sender, EventArgs e)
-        {
-            
-        }
-        //Кнопка видалення
+        
+        
         private void button1_Click(object sender, EventArgs e)
         {
             int id_row = dataGridView1.CurrentCell.RowIndex;
@@ -38,29 +34,34 @@ namespace ProgramAdminBoxInfo
                 d_boxer.Delete_query(id);
                 MessageBox.Show("Боксера " + name + " видалено");
             }
-            //виводимо базу в дата грід
             SELECT_boxers S_boxers = new SELECT_boxers();
-            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place");
+            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place division");
 
         }
 
-        
-        //Зміни в бд при зміні в датагрід
         void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            string text_edit = "";
             string id = dataGridView1["id", e.RowIndex].Value.ToString();
-            string text_edit = dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString();
+            if(dataGridView1[e.ColumnIndex, e.RowIndex].Value != null)
+            {
+                text_edit = dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString();
+            }
             string text_column = dataGridView1.Columns[e.ColumnIndex].Name;
             UPDATE_boxers U_boxers = new UPDATE_boxers();
-            if (text_column == "name_usa") U_boxers.Update_query(id, text_edit, "", "", "", "", "", "", "");
-            if (text_column == "name_ua") U_boxers.Update_query(id, "", text_edit, "", "", "", "", "", "");
-            if (text_column == "height") U_boxers.Update_query(id, "", "", text_edit, "", "", "", "", "");
-            if (text_column == "reach") U_boxers.Update_query(id, "", "", "", text_edit, "", "", "", "");
-            if (text_column == "stance") U_boxers.Update_query(id, "", "", "", "", text_edit, "", "", "");
-            if (text_column == "wiki_url_en") U_boxers.Update_query(id, "", "", "", "", "", text_edit, "", "");
-            if (text_column == "wiki_url_ua") U_boxers.Update_query(id, "", "", "", "", "", "", text_edit, "");
-            if (text_column == "boxreg_url") U_boxers.Update_query(id, "", "", "", "", "", "", "", text_edit);
-            
+            if (text_column == "name_usa") U_boxers.Update_query(id, text_edit, "", "", "", "", "", "", "", "", "", "", "");
+            if (text_column == "name_ua") U_boxers.Update_query(id, "", text_edit, "", "", "", "", "", "", "", "", "", "");
+            if (text_column == "height") U_boxers.Update_query(id, "", "", text_edit, "", "", "", "", "", "", "", "", "");
+            if (text_column == "reach") U_boxers.Update_query(id, "", "", "", text_edit, "", "", "", "", "", "", "", "");
+            if (text_column == "stance") U_boxers.Update_query(id, "", "", "", "", text_edit, "", "", "", "", "", "", "");
+            if (text_column == "wiki_url_en") U_boxers.Update_query(id, "", "", "", "", "", text_edit, "", "", "", "", "", "");
+            if (text_column == "wiki_url_ua") U_boxers.Update_query(id, "", "", "", "", "", "", text_edit, "", "", "", "", "");
+            if (text_column == "boxreg_url") U_boxers.Update_query(id, "", "", "", "", "", "", "", text_edit, "", "", "", "");
+            if (text_column == "nationality") U_boxers.Update_query(id, "", "", "", "", "", "", "", "", text_edit, "", "", "");
+            if (text_column == "residence") U_boxers.Update_query(id, "", "", "", "", "", "", "", "", "", text_edit, "", "");
+            if (text_column == "birth_place") U_boxers.Update_query(id, "", "", "", "", "", "", "", "", "", "", text_edit, "");
+            if (text_column == "division") U_boxers.Update_query(id, "", "", "", "", "", "", "", "", "", "", "", text_edit);
+
             MessageBox.Show("Відредаговано");
             
         }
@@ -72,7 +73,7 @@ namespace ProgramAdminBoxInfo
             textBox_Test.Text += Environment.NewLine + "Парсінг Персон BoxReg" + Environment.NewLine + "Початковий ID - " + id_box_reg;
             Parsing_boxreg pr_br = new Parsing_boxreg();
             pr_br.Person(id_box_reg);
-
+            
         }
 
         private void textBox_Test_TextChanged_1(object sender, EventArgs e)
@@ -80,6 +81,18 @@ namespace ProgramAdminBoxInfo
             textBox_Test.SelectionStart = textBox_Test.Text.Length;
             textBox_Test.ScrollToCaret();
             textBox_Test.Refresh();
+        }
+
+        private void bt_stop_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "STOP";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            SELECT_boxers S_boxers = new SELECT_boxers();
+            S_boxers.SELEKT_query("name_ua name_usa height reach stance wiki_url_en wiki_url_ua boxreg_url nationality residence birth_place division");
         }
     }
 }
