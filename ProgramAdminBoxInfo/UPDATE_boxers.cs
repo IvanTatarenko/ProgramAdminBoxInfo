@@ -6,7 +6,7 @@ namespace ProgramAdminBoxInfo
 {
     internal class UPDATE_boxers
     {
-        public void Update_query(string id, string name_usa = "", string name_ua = "", string height = "", string reach = "", string stance = "", string wiki_url_en = "", string wiki_url_ua = "", string boxreg_url = "", string nationality = "", string residence = "", string birth_place = "")
+        public void Update_query(string id, string name_usa = "", string name_ua = "", string height = "", string reach = "", string stance = "", string wiki_url_en = "", string wiki_url_ua = "", string boxreg_url = "", string nationality = "", string residence = "", string birth_place = "", string division = "")
         {
             string query = "UPDATE boxers SET";
             if (name_usa != "") query = query + " name_usa = @name_usa,";
@@ -20,11 +20,11 @@ namespace ProgramAdminBoxInfo
             if (nationality != "") query = query + " nationality = @nationality,";
             if (residence != "") query = query + " residence = @residence,";
             if (birth_place != "") query = query + " birth_place = @birth_place,";
+            if (division != "") query = query + " division = @division,";
+            
             query = query + " id = @id WHERE id = @id";
             DB db = new DB();
-            //Робимо запрос
             MySqlCommand command = new MySqlCommand(query, db.getConnection());
-            //маскуємо запроси
             command.Parameters.Add("@id", MySqlDbType.VarChar).Value = id;
             command.Parameters.Add("@name_usa", MySqlDbType.VarChar).Value = name_usa;
             command.Parameters.Add("@name_ua", MySqlDbType.VarChar).Value = name_ua;
@@ -37,6 +37,7 @@ namespace ProgramAdminBoxInfo
             command.Parameters.Add("@nationality", MySqlDbType.VarChar).Value = nationality;
             command.Parameters.Add("@residence", MySqlDbType.VarChar).Value = residence;
             command.Parameters.Add("@birth_place", MySqlDbType.VarChar).Value = birth_place;
+            command.Parameters.Add("@division", MySqlDbType.VarChar).Value = division;
             db.openConnection();
             command.ExecuteNonQuery();
             db.closeConnection();

@@ -15,9 +15,7 @@ namespace ProgramAdminBoxInfo
                 query = query + s + ", ";
             }
             query = query + "id FROM boxers";
-            // підлючення  до бд
             DB db = new DB();
-            //Команда бд
             MySqlCommand command = new MySqlCommand(query, db.getConnection());
             db.openConnection();
             var reader = command.ExecuteReader();
@@ -41,6 +39,8 @@ namespace ProgramAdminBoxInfo
                     if (s == "nationality" && !reader.IsDBNull(reader.GetOrdinal("nationality"))) boxer.nationality = reader.GetString("nationality");
                     if (s == "residence" && !reader.IsDBNull(reader.GetOrdinal("residence"))) boxer.residence = reader.GetString("residence");
                     if (s == "birth_place" && !reader.IsDBNull(reader.GetOrdinal("birth_place"))) boxer.birth_place = reader.GetString("birth_place");
+                    if (s == "division" && !reader.IsDBNull(reader.GetOrdinal("division"))) boxer.division = reader.GetString("division");
+                    
 
                 }
                 list.Add(boxer);
