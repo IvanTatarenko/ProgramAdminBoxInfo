@@ -11,7 +11,7 @@ namespace ProgramAdminBoxInfo
         //change of unique Latin letters of different countries to standard Latin letters
         public string Replace_all_letters(string text)
         {
-            string[][] alphabets = new string[38][];
+            string[][] alphabets = new string[39][];
             alphabets[0] = new string[] { "A", "À", "Á", "Â", "Ã", "Ä", "Å", "Æ", "Ā", "Ă", "Ą", };
             alphabets[1] = new string[] { "a", "à", "á", "â", "ã", "ä", "å", "æ", "ā", "ă", "ą", };
             alphabets[2] = new string[] { "C", "Ç", "Ć", "Ĉ", "Ċ", "Č" };
@@ -50,6 +50,7 @@ namespace ProgramAdminBoxInfo
             alphabets[35] = new string[] { "y", "ý", "ŷ", "ÿ" };
             alphabets[36] = new string[] { "Z", "Ź", "Ż", "Ž" };
             alphabets[37] = new string[] { "z", "ź", "ż", "ž" };
+            alphabets[38] = new string[] { "", "'" };
             foreach (string[] letters in alphabets)
             {
                 foreach (string letter in letters)

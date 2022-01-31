@@ -11,6 +11,7 @@
   <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.16.1" />
     <PackageReference Include="AngleSharp.Css" Version="0.16.3" />
+    <PackageReference Include="AngleSharp.Io" Version="0.16.0" />
     <PackageReference Include="MySql.Data" Version="8.0.28" />
   </ItemGroup>
 
