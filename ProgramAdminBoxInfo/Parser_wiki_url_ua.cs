@@ -10,6 +10,7 @@ namespace ProgramAdminBoxInfo
     {
         public async Task wiki_url_ua()
         {
+            
             // підлючення  до бд
             DB db = new DB();
             //Команда бд
@@ -20,6 +21,8 @@ namespace ProgramAdminBoxInfo
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("name_usa", typeof(string));
             dt.Columns.Add("wiki_url_en", typeof(string));
+            dt.Columns.Add("wiki_exclusion", typeof(string));
+            
             //відкриваємо зєднання
             db.openConnection();
             //створюємо ріадер для зчитування данних з Mysql
@@ -28,8 +31,11 @@ namespace ProgramAdminBoxInfo
             string name_usa;
             string wiki_url_en;
             string wiki_url_ua = "";
+            string wiki_exclusion = "";
             int id;
             int num_id = Convert.ToInt32(Program.f1.textBox4.Text);
+            int download_all = 0;
+            int download_id = 0;
             //Витаскуємо данні з бази
             while (reader.Read())
             {
@@ -40,8 +46,17 @@ namespace ProgramAdminBoxInfo
                 id = reader.GetInt32(reader.GetOrdinal("id"));
                 name_usa = reader.GetString(reader.GetOrdinal("name_usa"));
                 wiki_url_en = reader.GetString(reader.GetOrdinal("wiki_url_en"));
+                if (reader.IsDBNull(reader.GetOrdinal("wiki_exclusion")))
+                {
+                    wiki_exclusion = "";
+                }
+                else
+                {
+                    wiki_exclusion = reader.GetString(reader.GetOrdinal("wiki_exclusion"));
+                }
                 //вносимо в таблицю данні
-                dt.Rows.Add(new Object[] { id, name_usa, wiki_url_en });
+                dt.Rows.Add(new Object[] { id, name_usa, wiki_url_en, wiki_exclusion });
+                download_all++;
             }
             //закриваємо ріадер
             reader.Close();
@@ -52,14 +67,25 @@ namespace ProgramAdminBoxInfo
             //Перебираємо боксерів та їх силки на вікі
             while (reader2.Read())
             {
-
+                download_id++;
+                double iii;
+                iii = Convert.ToDouble(download_id) / Convert.ToDouble(download_all) * 100.00;
+                Program.f1.label6.Text = iii.ToString() + "%";
                 //значення імя та юрл з бази
                 id = reader2.GetInt32(reader2.GetOrdinal("id"));
+                wiki_exclusion = reader2.GetString(reader2.GetOrdinal("wiki_exclusion"));
                 if (Program.f1.textBox4.Text == "STOP")
                 {
                     Program.f1.textBox4.Text = id.ToString();
                     return;
                 }
+                if(wiki_exclusion != "")
+                {
+                    Program.f1.textBox_Test.Text += Environment.NewLine + "Пропуск ID " + id.ToString();
+                    continue;
+                }
+                
+
                 name_usa = reader2.GetString(reader2.GetOrdinal("name_usa"));
                 wiki_url_en = reader2.GetString(reader2.GetOrdinal("wiki_url_en"));
                 Program.f1.textBox_Test.Text += Environment.NewLine + "ID " + id.ToString();

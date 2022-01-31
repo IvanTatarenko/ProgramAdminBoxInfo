@@ -11,7 +11,8 @@ namespace ProgramAdminBoxInfo
     {
         public async Task Parser_Wiki_en()
         {
-
+            int download_all = 0;
+            int download_id = 0;
             Replace_text replace_Text = new Replace_text();
             Audit_name_duble audit_boxer = new Audit_name_duble();
             // підлючення  до бд
@@ -24,6 +25,7 @@ namespace ProgramAdminBoxInfo
             dt.Columns.Add("id", typeof(int));
             dt.Columns.Add("name_usa", typeof(string));
             dt.Columns.Add("wiki_url_en", typeof(string));
+
             //відкриваємо зєднання
             db.openConnection();
             //створюємо ріадер для зчитування данних з Mysql
@@ -48,6 +50,7 @@ namespace ProgramAdminBoxInfo
 
                 //вносимо в таблицю данні
                 dt.Rows.Add(new Object[] { id, name_usa, wiki_url_en });
+                download_all++;
             }
             //закриваємо ріадер
             reader.Close();
@@ -58,7 +61,10 @@ namespace ProgramAdminBoxInfo
             //Перебираємо боксерів та їх силки на вікі
             while (reader2.Read())
             {
-
+                download_id++;
+                double iii;
+                iii = Convert.ToDouble(download_id) / Convert.ToDouble(download_all) * 100.00;
+                Program.f1.label6.Text = iii.ToString() + "%";
                 //значення імя та юрл з бази
                 id = reader2.GetInt32(reader2.GetOrdinal("id"));
                 name_usa = reader2.GetString(reader2.GetOrdinal("name_usa"));

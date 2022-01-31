@@ -53,6 +53,7 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             // 
             this.textBox_Test.Location = new System.Drawing.Point(967, 12);
             this.textBox_Test.Name = "textBox_Test";
-            this.textBox_Test.Size = new System.Drawing.Size(495, 618);
+            this.textBox_Test.Size = new System.Drawing.Size(495, 583);
             this.textBox_Test.TabIndex = 7;
             this.textBox_Test.Text = "";
             this.textBox_Test.TextChanged += new System.EventHandler(this.textBox_Test_TextChanged_1);
@@ -293,11 +294,22 @@
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(967, 600);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(68, 30);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "label6";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 642);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.label5);
@@ -358,5 +370,6 @@
         public TextBox textBox4;
         private Button button11;
         private Button button12;
+        public Label label6;
     }
 }

@@ -207,5 +207,7 @@ namespace ProgramAdminBoxInfo
             }
             textBox_Test.Text += Environment.NewLine + "Видалення сміття завершено";
         }
+
+        
     }
 }

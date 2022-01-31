@@ -8,14 +8,19 @@ namespace ProgramAdminBoxInfo
     {
         public async Task Person(int id_box_reg)
         {
-
+            int download_all = 1100000;
+            int download_id = 0;
             Program.f1.textBox_Test.Text += Environment.NewLine + "Налаштовуємо парсер";
             //parsing settings
             var config = Configuration.Default.WithDefaultLoader();
             using var context = BrowsingContext.New(config);
             var boxer = new boxer_sp();
-            while (id_box_reg < 2000000)
+            while (id_box_reg < 1100000)
             {
+                download_id++;
+                double iii;
+                iii = Convert.ToDouble(download_id) / Convert.ToDouble(download_all) * 100.00;
+                Program.f1.label6.Text = iii.ToString() + "%";
                 boxer.reach = "";
                 boxer.stance = "";
                 boxer.height = "";
